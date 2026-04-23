@@ -141,14 +141,7 @@ http://localhost:8080/api/ai/ask?prompt=Hello
 * Google Gemini API
 * Thymeleaf
 
----
-
-## -> Notes
-
-* Do **NOT** commit your API key to GitHub
-* Always use environment variables for security
-
----
+----
 
 ## -> License
 
