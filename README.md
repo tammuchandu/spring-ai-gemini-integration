@@ -146,3 +146,81 @@ http://localhost:8080/api/ai/ask?prompt=Hello
 ## -> License
 
 This project is for learning/demo purposes.
+
+
+
+***** Application Flow (Text Format)**********
+
+###  Client Layer (Browser)
+
+* User opens the application in the browser
+* UI: `index.html` (Thymeleaf)
+
+---
+
+###  Step-by-Step Flow
+
+1. **User Request (Home Page)**
+
+   * Browser → `GET /`
+   * Handled by: `HomeController`
+
+3. **Load UI**
+
+   * `HomeController` returns Thymeleaf template
+   * Browser displays `index.html`
+
+4. **User Sends Prompt**
+
+   * User enters a question and clicks **Ask Gemini**
+   * Browser → `GET /api/ai/ask?prompt=...`
+
+5. **REST Controller**
+
+   * Request handled by: `AIController`
+   * Calls service method: `generateText(prompt)`
+
+6. **Service Layer**
+
+   * `AIService` uses Spring AI `ChatClient`
+   * Sends request to Gemini API
+
+7. **External API Call**
+
+   * `AIService` → HTTP call → Google Gemini (`gemini-2.5-flash`)
+
+8. **AI Processing**
+
+   * Gemini API processes the prompt
+   * Generates response
+
+9. **Response Flow Back**
+
+   * Gemini → `AIService` (AI response)
+   * `AIService` → `AIController` (String response)
+   * `AIController` → Browser (JSON/text response)
+
+10. **UI Update**
+
+   * Browser displays AI-generated response
+
+---
+
+## => Summary Flow
+
+```
+Browser (UI)
+   ↓
+HomeController
+   ↓
+Thymeleaf UI Loaded
+   ↓
+User Prompt → AIController
+   ↓
+AIService (ChatClient)
+   ↓
+Google Gemini API
+   ↓
+Response back → UI
+```
+
