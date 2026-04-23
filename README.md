@@ -149,7 +149,7 @@ This project is for learning/demo purposes.
 
 
 
-***** Application Flow (Text Format)**********
+***** Application Flow **********
 
 ###  Client Layer (Browser)
 
